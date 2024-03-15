@@ -1,13 +1,20 @@
 package org.example.world_windsufers.client;
 
-import org.example.world_windsufers.common.Destination;
-import org.example.world_windsufers.model.dto.WeatherDto;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.example.world_windsufers.config.FeignClientConfig;
+import org.example.world_windsufers.model.Weather;
+
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "weatherClient", url = "${weather.api.base-url}")
-public abstract class WeatherClient {
-    @GetMapping("/weather")
-    abstract WeatherDto weather(@RequestParam Destination destination);
+@FeignClient(name = "weatherClient", url = "${weather.api.base-url}", configuration = FeignClientConfig.class)
+public interface WeatherClient {
+    @GetMapping("/forecast/daily")
+    Weather getForecast(@RequestParam("city") String city);
 }
+
+
+
+
+
+

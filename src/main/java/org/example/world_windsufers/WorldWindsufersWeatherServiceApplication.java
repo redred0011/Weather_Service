@@ -4,7 +4,8 @@ import org.example.world_windsufers.properties.WeatherProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
 
 @SpringBootApplication
 @EnableConfigurationProperties(WeatherProperties.class)
