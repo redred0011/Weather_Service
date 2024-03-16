@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "weatherClient", url = "${weather.api.base-url}", configuration = FeignClientConfig.class)
 public interface WeatherClient {
-    @GetMapping("/forecast/daily")
+    @GetMapping("/forecasts")
     Weather getForecast(@RequestParam("city") String city);
 }
 

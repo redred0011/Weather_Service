@@ -2,5 +2,5 @@ package org.example.world_windsufers.common;
 
 
 public enum Destination {
-    JASTARNIA, BRIDGETOWN, FORTALEZA, PISSOURI, LEMORNE;
+    JASTARNIA, BRIDGETOWN, FORTALEZA, PISSOURI, LEMORNE
 }

@@ -2,4 +2,3 @@ weather:
   api:
     base-url: "https://api.weatherbit.io/v2.0/forecast/daily"
     api-key: "ff98655ba53b4894afd58364b901b4b8"
-
