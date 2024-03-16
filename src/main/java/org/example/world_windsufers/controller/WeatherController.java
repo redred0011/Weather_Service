@@ -1,6 +1,7 @@
 package org.example.world_windsufers.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.world_windsufers.exception.BestLocationNotFoundException;
 import org.example.world_windsufers.model.Weather;
 import org.example.world_windsufers.service.WeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,8 @@ public class WeatherController {
         return weatherService.getForecastsForAllDestinations();
     }
     @GetMapping("/best/forecasts")
-    public Weather getBestForecastForWindsurfing(@RequestParam(required = false)String email) {
+    public Weather getBestForecastForWindsurfing(@RequestParam(required = false) String email) {
         Optional<Weather> bestForecast = weatherService.findBestWindsurfingLocation(email);
-        return bestForecast.orElseThrow(() -> new RuntimeException("Not found the best localization for Wind Surfing...."));
+        return bestForecast.orElseThrow(() -> new BestLocationNotFoundException("Not found the best localization for Wind Surfing...."));
     }
-
 }

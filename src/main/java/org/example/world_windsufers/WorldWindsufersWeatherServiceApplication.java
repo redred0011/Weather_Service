@@ -9,6 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 
+
 @SpringBootApplication
 @EnableConfigurationProperties(WeatherProperties.class)
 @EnableFeignClients
