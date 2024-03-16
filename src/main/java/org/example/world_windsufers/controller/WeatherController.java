@@ -5,6 +5,7 @@ import org.example.world_windsufers.model.Weather;
 import org.example.world_windsufers.service.WeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public class WeatherController {
         return weatherService.getForecastsForAllDestinations();
     }
     @GetMapping("/best/forecasts")
-    public Weather getBestForecastForWindsurfing() {
-        Optional<Weather> bestForecast = weatherService.findBestWindsurfingLocation();
+    public Weather getBestForecastForWindsurfing(@RequestParam(required = false)String email) {
+        Optional<Weather> bestForecast = weatherService.findBestWindsurfingLocation(email);
         return bestForecast.orElseThrow(() -> new RuntimeException("Not found the best localization for Wind Surfing...."));
     }
 

@@ -8,7 +8,18 @@ spring:
     cache-names: forecasts,bestLocation
     caffeine:
       spec: maximumSize=500,expireAfterAccess=300s
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: spamkonto018@gmail.com
+    password: "mokf gobw qhcm sbav"
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 cloud:
   openfeign:
     client:
@@ -16,3 +27,5 @@ cloud:
         weatherClient:
           default-request-headers:
             api-key: "ff98655ba53b4894afd58364b901b4b8"
+
+
