@@ -4,7 +4,6 @@ package org.example.world_windsufers.client;
 import org.example.world_windsufers.config.FeignClientConfig;
 import org.example.world_windsufers.model.Weather;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
