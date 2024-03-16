@@ -23,6 +23,7 @@ public class WeatherController {
     public List<Weather> getForecastsForAllDestinations() {
         return weatherService.getForecastsForAllDestinations();
     }
+
     @GetMapping("/best/forecasts")
     public Weather getBestForecastForWindsurfing(@RequestParam(required = false) String email) {
         Optional<Weather> bestForecast = weatherService.findBestWindsurfingLocation(email);

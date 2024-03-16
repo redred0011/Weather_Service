@@ -15,7 +15,7 @@ public class Forecast {
     private double score;
 
     public BigDecimal getScore() {
-        BigDecimal score = new BigDecimal(3*wind_spd + temp);
+        BigDecimal score = new BigDecimal(3 * wind_spd + temp);
         score = score.setScale(2, RoundingMode.CEILING);
         return score;
     }
