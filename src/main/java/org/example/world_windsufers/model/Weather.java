@@ -1,14 +1,13 @@
 package org.example.world_windsufers.model;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.example.world_windsufers.common.Destination;
 
+import java.util.List;
 
-@Setter
 @Getter
-@RequiredArgsConstructor
+@Setter
 public class Weather {
-    private final Destination destination;
+    private String city_name;
+    private List<Forecast> data;
 }
