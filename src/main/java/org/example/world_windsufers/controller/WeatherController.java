@@ -3,7 +3,6 @@ package org.example.world_windsufers.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.world_windsufers.model.Weather;
 import org.example.world_windsufers.service.WeatherService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +19,7 @@ public class WeatherController {
 
     @GetMapping("/forecasts")
     public List<Weather> getForecastsForAllDestinations() {
-        List<Weather> forecasts = weatherService.getForecastsForAllDestinations();
-        return forecasts;
+        return weatherService.getForecastsForAllDestinations();
     }
     @GetMapping("/best/forecasts")
     public Weather getBestForecastForWindsurfing() {
