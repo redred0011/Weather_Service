@@ -1,21 +1,5 @@
 # _World Windsufer's Weather Application_
 
-## How to check the operation of the application?
-
-### Weather for all selected locations
-
-- launch your web browser and enter the website address:
-    -     https://salty-hamlet-75396-7f564a7d82dc.herokuapp.com/api/forecasts
-
-### The best location for windsurfing within the designated weather parameters
-
-- launch your web browser and enter the website address:
-    -     https://salty-hamlet-75396-7f564a7d82dc.herokuapp.com/api/best/forecasts
-
-### {Sending information by e-mail}The best location for windsurfing within the designated weather parameters:
-
-- launch your web browser and enter the website address but you need to change your email address:
-   -     https://salty-hamlet-75396-7f564a7d82dc.herokuapp.com/api/best/forecasts?email=bartek.anczewski10@gmail.com
 ## How to enable the application?
 
 - run intellij

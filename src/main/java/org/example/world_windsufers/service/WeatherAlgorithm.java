@@ -42,10 +42,10 @@ public class WeatherAlgorithm {
     }
 
     private Weather convertWeatherScoreToWeather(WeatherScore weatherScore) {
-        Weather weather = new Weather();
-        weather.setCity_name(weatherScore.getCityName());
-        weather.setData(List.of(weatherScore.getForecast()));
-        return weather;
+        return Weather.builder()
+                .city_name(weatherScore.getCityName())
+                .data(List.of(weatherScore.getForecast()))
+                .build();
     }
 }
 

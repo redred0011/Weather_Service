@@ -27,9 +27,13 @@ public class WeatherServiceTest {
     @MockBean
     private WeatherAlgorithm weatherAlgorithm;
 
+    private final Weather expectedBestWeather = Weather.builder()
+            .city_name("Warsaw")
+            .build();
+
     @Test
     public void getForecastsForAllDestinations_HappyPath_ShouldReturnForecasts() {
-        when(weatherClient.getForecast(anyString())).thenReturn(new Weather());
+        when(weatherClient.getForecast(anyString())).thenReturn(Weather.builder().build());
 
         List<Weather> forecasts = weatherService.getForecastsForAllDestinations();
 
@@ -41,27 +45,25 @@ public class WeatherServiceTest {
 
     @Test
     public void findBestWindsurfingLocation_HappyPath_ShouldReturnBestLocation() {
-        Weather expectedBestWeather = new Weather();
-        expectedBestWeather.setCity_name("JASTARNIA");
         when(weatherClient.getForecast(anyString())).thenAnswer(invocation -> {
             String cityName = invocation.getArgument(0);
-            Weather weather = new Weather();
-            weather.setCity_name(cityName);
-            return weather;
+            return Weather.builder().city_name(cityName).build();
         });
 
         when(weatherAlgorithm.findBestLocationForWindsurfing(any())).thenReturn(Optional.of(expectedBestWeather));
 
     }
+
     @Test
     public void findBestWindsurfingLocation_WhenNoSuitableLocation_ShouldReturnEmpty() {
         when(weatherAlgorithm.findBestLocationForWindsurfing(any())).thenReturn(Optional.empty());
-        when(weatherClient.getForecast(anyString())).thenReturn(new Weather());
+        when(weatherClient.getForecast(anyString())).thenReturn(Weather.builder().build());
 
         Optional<Weather> bestLocation = weatherService.findBestWindsurfingLocation(null);
 
         assertFalse(bestLocation.isPresent());
     }
+
     @Test
     public void getForecastsForAllDestinations_WhenApiFails_ShouldHandleErrorGracefully() {
         when(weatherClient.getForecast(anyString())).thenThrow(new RuntimeException("Failed to communicate with weather API"));
@@ -70,15 +72,14 @@ public class WeatherServiceTest {
 
         assertTrue(exception.getMessage().contains("Failed to communicate with weather API"));
     }
+
     @Test
     public void findBestWindsurfingLocation_WhenForecastsAreEmpty_ShouldReturnEmpty() {
-        when(weatherClient.getForecast(anyString())).thenReturn(new Weather());
+        when(weatherClient.getForecast(anyString())).thenReturn(Weather.builder().build());
         when(weatherAlgorithm.findBestLocationForWindsurfing(any())).thenReturn(Optional.empty());
 
         Optional<Weather> bestLocation = weatherService.findBestWindsurfingLocation(null);
 
         assertFalse(bestLocation.isPresent(), "Expected no best location due to empty forecasts");
     }
-
-
 }

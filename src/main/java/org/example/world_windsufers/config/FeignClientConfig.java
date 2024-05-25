@@ -1,21 +1,20 @@
 package org.example.world_windsufers.config;
 
 import feign.RequestInterceptor;
+import lombok.RequiredArgsConstructor;
+import org.example.world_windsufers.properties.WeatherProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
+@RequiredArgsConstructor
 public class FeignClientConfig {
 
-    @Value("${weather.api.api-key}")
-    private String apiKey;
+    private final WeatherProperties weatherProperties;
 
     @Bean
     public RequestInterceptor requestInterceptor() {
-        return requestTemplate -> {
-            requestTemplate.query("key", apiKey);
-        };
+        return requestTemplate -> requestTemplate.query("key", weatherProperties.getApiKey());
     }
 }
 

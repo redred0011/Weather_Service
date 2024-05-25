@@ -1,6 +1,5 @@
 package org.example.world_windsufers.client;
 
-
 import org.example.world_windsufers.config.FeignClientConfig;
 import org.example.world_windsufers.model.Weather;
 

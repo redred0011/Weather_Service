@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class WorldWindsufersWeatherServiceApplicationTests {
+class WorldWindSufersWeatherServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
